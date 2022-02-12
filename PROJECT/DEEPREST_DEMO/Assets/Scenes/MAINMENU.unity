@@ -1683,7 +1683,7 @@ GameObject:
   - component: {fileID: 1340720458}
   - component: {fileID: 1340720457}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: MAP_GRID
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1697,7 +1697,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1340720456}
   m_Enabled: 1
-  m_CellSize: {x: 2.16, y: 1.08, z: 2.16}
+  m_CellSize: {x: 2.16, y: 1.08, z: 2}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 3
   m_CellSwizzle: 0
@@ -2278,7 +2278,7 @@ GameObject:
   - component: {fileID: 1899240224}
   - component: {fileID: 1899240223}
   m_Layer: 0
-  m_Name: Tilemap
+  m_Name: BEDROOM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
