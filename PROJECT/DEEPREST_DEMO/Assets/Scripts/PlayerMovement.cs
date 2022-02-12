@@ -13,14 +13,16 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    void Update()
+    private void FixedUpdate() 
     {
         moveH = Input.GetAxisRaw("Horizontal") * moveSpeed;
         moveV = Input.GetAxisRaw("Vertical") * moveSpeed;
+        rigidBody.velocity = new Vector2(moveH, moveV);    
+
+        Vector2 direction = new Vector2(moveH, moveV);
+        FindObjectOfType<PlayerAnimation>().SetDirection(direction);
     }
 
-    private void FixedUpdate() 
-    {
-        rigidBody.velocity = new Vector2(moveH, moveV);    
-    }
+    
+
 }
