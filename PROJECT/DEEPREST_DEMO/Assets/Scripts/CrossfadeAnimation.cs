@@ -13,7 +13,7 @@ public class CrossfadeAnimation : MonoBehaviour
     void Update()
     {
         //if(Input.GetMouseButtonDown(0)) LoadNextLevel();
-        if(Input.GetButtonDown("Jump")) LoadNextLevel();
+        if(Input.GetButtonDown("Cancel")) LoadNextLevel();
     }
 
     public void LoadNextLevel(){
