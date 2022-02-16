@@ -5,6 +5,7 @@ using UnityEngine;
 public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
+    
 
     public void TriggerDialogue()
     {
@@ -12,7 +13,7 @@ public class DialogueTrigger : MonoBehaviour
     }
     void Start()
     {
-        TriggerDialogue();
+        //TriggerDialogue();
         //FindObjectOfType<DialogueManager>().StartDialogue(this.dialogue);
     }
 

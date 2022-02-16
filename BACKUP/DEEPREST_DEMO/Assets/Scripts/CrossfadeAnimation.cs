@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class CrossfadeAnimation : MonoBehaviour
 {
    public Animator transition;
+   public bool startFade = false;
 
    public float transitionTime = 1.0f;
 
@@ -13,7 +14,12 @@ public class CrossfadeAnimation : MonoBehaviour
     void Update()
     {
         //if(Input.GetMouseButtonDown(0)) LoadNextLevel();
-        if(Input.GetButtonDown("Cancel")) LoadNextLevel();
+        //if(Input.GetButtonDown("Cancel")) LoadNextLevel();
+        if(startFade)
+        {
+            LoadNextLevel();
+            startFade = false;
+        }
     }
 
     public void LoadNextLevel(){
