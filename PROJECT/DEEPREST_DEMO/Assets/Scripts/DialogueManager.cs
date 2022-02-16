@@ -9,11 +9,16 @@ public class DialogueManager : MonoBehaviour
     public Animator dialogueAnimation;
     private Queue<string> lines, names;
     private bool ongoingDialogue = false;
-
-    void Start()
+    private void Awake() 
     {
         lines = new Queue<string>();
         names = new Queue<string>();
+    }
+
+    void Start()
+    {
+        //lines = new Queue<string>();
+        //names = new Queue<string>();
     }
 
     private void Update() {
@@ -22,6 +27,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        ongoingDialogue = true;
         dialogueAnimation.SetBool("IsOpen", true);
         // Debugging purposes
         string dialogueNames = GetDialogueNames(dialogue);
@@ -81,15 +87,16 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void EndDialogue(){
+        ongoingDialogue = false;
         dialogueAnimation.SetBool("IsOpen", false);
         Debug.Log("End of the dialogue");
     }
 
     private void CheckDialogue(){
-        int check = ongoingDialogue ? 0 : 1;
+        ongoingDialogue = ongoingDialogue ? true : false;
         
-        switch(check){
-            case 1:
+        switch(ongoingDialogue){
+            case true:
                 if(Input.GetButtonDown("Jump")) DisplayNextLine();
                 break;
         }
