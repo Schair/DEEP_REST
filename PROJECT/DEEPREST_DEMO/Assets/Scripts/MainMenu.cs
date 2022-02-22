@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
+        FindObjectOfType<AudioManager>().FadeOutOne("THEME");
         LoadNextLevel();
     }
 

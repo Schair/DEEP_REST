@@ -1801,6 +1801,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1617417203985470452, guid: f67315699fec18f42b6caf520b68cda7, type: 3}
+      propertyPath: secondsTillStart
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9183834800672372345, guid: f67315699fec18f42b6caf520b68cda7, type: 3}
       propertyPath: m_Name
       value: CROSSFADE
