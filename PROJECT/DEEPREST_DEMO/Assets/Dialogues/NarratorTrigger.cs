@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class NarratorTrigger : MonoBehaviour
 {
+    public bool triggerAtStart;
     public float timeTillStart = 3.0f;
     public NarratorDialogue dialogue;
+    
     
 
     public void TriggerDialogue()
@@ -14,7 +16,7 @@ public class NarratorTrigger : MonoBehaviour
     }
     void Start()
     {
-        StartCoroutine(WaitToStart(timeTillStart));
+        if(triggerAtStart) StartCoroutine(WaitToStart(timeTillStart));
         //TriggerDialogue();
         //FindObjectOfType<DialogueManager>().StartDialogue(this.dialogue);
     }

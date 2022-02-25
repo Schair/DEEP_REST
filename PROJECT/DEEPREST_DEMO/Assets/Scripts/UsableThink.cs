@@ -5,6 +5,7 @@ using UnityEngine;
 public class UsableThink : Interactable
 {
     public ThinkTrigger dialogue;
+    public ThinkManager dialogueManager;
     private Collider2D playerCollider;
     private bool playerCollision = false;
     public override void Interact()
@@ -31,7 +32,7 @@ public class UsableThink : Interactable
     }
 
     private void CheckInteraction(){
-        if(playerCollision && Input.GetButtonDown("Fire1")) {
+        if(playerCollision && Input.GetButtonDown("Fire1") && !dialogueManager.ongoingDialogue) {
             playerCollider.GetComponent<PlayerMovement>().CloseInteractIcon();
             Interact();
         }

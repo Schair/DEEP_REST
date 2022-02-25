@@ -13,8 +13,6 @@ public class CrossfadeAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(Input.GetMouseButtonDown(0)) LoadNextLevel();
-        //if(Input.GetButtonDown("Cancel")) LoadNextLevel();
         if(startFade)
         {
             LoadNextLevel();

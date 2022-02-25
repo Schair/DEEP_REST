@@ -46,8 +46,26 @@ public class AudioManager : MonoBehaviour
         }
         if (s.fadeIn) StartCoroutine(PlayFadeInOne(s));
         else s.source.Play();
+    }
 
-        
+    public void Pause(string name){
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null){ 
+            Debug.Log("AUDIO NAME NOT FOUND!");
+            return;
+        }
+        if (s.fadeOut) StartCoroutine(PauseFadeOutOne(s));
+        else s.source.Pause();
+    }
+
+    public void Stop(string name){
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null){ 
+            Debug.Log("AUDIO NAME NOT FOUND!");
+            return;
+        }
+        if (s.fadeOut) StartCoroutine(StopFadeOutOne(s));
+        else s.source.Stop();
     }
 
     public void FadeOutOne(string name){
@@ -91,6 +109,16 @@ public class AudioManager : MonoBehaviour
             UpdateVolume(sound.name, sound.volume);
         }
         sound.source.Stop();
+    }
+
+    private IEnumerator PauseFadeOutOne(Sound sound){
+        Debug.Log("fading out...");
+        while(sound.volume > 0.0f){
+            yield return new WaitForSeconds(0.01f);
+            sound.volume -= 0.01f;
+            UpdateVolume(sound.name, sound.volume);
+        }
+        sound.source.Pause();
     }
 
 

@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
+    public bool triggerAtStart;
+    public float timeTillStart;
     public Dialogue dialogue;
+    
     
 
     public void TriggerDialogue()
@@ -13,6 +16,7 @@ public class DialogueTrigger : MonoBehaviour
     }
     void Start()
     {
+        if(triggerAtStart) StartCoroutine(WaitToStart());
         //TriggerDialogue();
         //FindObjectOfType<DialogueManager>().StartDialogue(this.dialogue);
     }
@@ -21,5 +25,10 @@ public class DialogueTrigger : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private IEnumerator WaitToStart(){
+        yield return new WaitForSeconds(timeTillStart);
+        TriggerDialogue();
     }
 }

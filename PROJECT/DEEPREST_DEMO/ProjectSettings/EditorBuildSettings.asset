@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MAINMENU.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/PROLOGUE.unity
+    guid: fc9425a076eb7ab4683813051b6fabe0
+  - enabled: 1
     path: "Assets/Scenes/INTRODUCCI\xD3N.unity"
     guid: c552ac8d499cc914a83ed7809999cf0c
   - enabled: 1

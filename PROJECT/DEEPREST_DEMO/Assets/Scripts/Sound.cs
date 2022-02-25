@@ -13,7 +13,7 @@ public class Sound
     public bool loop;
     public bool playAtStart;
     public float secondsTillStart;
-    public bool fadeIn;
+    public bool fadeIn, fadeOut;
     [HideInInspector]
     public AudioSource source;
 }
