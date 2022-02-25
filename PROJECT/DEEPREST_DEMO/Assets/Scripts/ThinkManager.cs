@@ -1,20 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class ThinkManager : MonoBehaviour
 {
     public TextMeshProUGUI nameText, messageText;
     public Animator thinkAnimation;
+    public Image textArrow;
     private Queue<string> lines, names;
-    public bool ongoingDialogue;
-    public bool textOngoing;
-    public bool dialogueEnd;
+    [HideInInspector] public bool ongoingDialogue;
+    [HideInInspector] public bool textOngoing;
+    [HideInInspector] public bool dialogueEnd;
     private void Awake() 
     {
         lines = new Queue<string>();
         names = new Queue<string>();
+        textArrow.enabled = false;
         
     }
 
@@ -25,6 +28,7 @@ public class ThinkManager : MonoBehaviour
 
     private void Update() {
         CheckDialogue();
+        CheckArrowVisibility();
     }
 
     public void StartDialogue(ThinkDialogue dialogue)
@@ -105,10 +109,18 @@ public class ThinkManager : MonoBehaviour
     private void CheckDialogue(){
         if(ongoingDialogue && textOngoing && Input.GetButtonDown("Fire1")) {
             textOngoing = false;
-            Debug.Log("MESSAGE WAS BEING WRITTEN");
+            // Debug.Log("MESSAGE WAS BEING WRITTEN");
         } else if (ongoingDialogue && !textOngoing && Input.GetButtonDown("Fire1")){
             DisplayNextLine();
-            Debug.Log("MESSAGE HAD FINISHED");
+            // Debug.Log("MESSAGE HAD FINISHED");
+        }
+    }
+
+    private void CheckArrowVisibility(){
+        if(ongoingDialogue && !textOngoing){
+            textArrow.enabled = true;
+        } else{
+            textArrow.enabled = false;
         }
     }
 

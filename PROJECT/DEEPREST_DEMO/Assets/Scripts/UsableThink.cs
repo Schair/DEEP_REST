@@ -5,12 +5,13 @@ using UnityEngine;
 public class UsableThink : Interactable
 {
     public ThinkTrigger dialogue;
+    public int dialogueNumber;
     public ThinkManager dialogueManager;
     private Collider2D playerCollider;
     private bool playerCollision = false;
     public override void Interact()
     {
-        dialogue.TriggerDialogue();
+        dialogue.TriggerAndSetCertainDialogue(dialogueNumber);
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Player")){

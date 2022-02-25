@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PrologueManager : MonoBehaviour
 {
     [SerializeField] private Vector2[] movements;
     private int currentMovement = 0;
+    public Animator transition;
+    public float transitionTime;
     public Camera mainCamera;
+    public Canvas nameInput;
     public ThinkManager thinkManager;
     public ThinkTrigger thinkTrigger;
     public bool textEnter;
@@ -14,6 +19,7 @@ public class PrologueManager : MonoBehaviour
     void Awake()
     {
         camPos = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y,mainCamera.transform.position.z);
+        nameInput.enabled = false;
     }
 
     void Start()
@@ -26,11 +32,23 @@ public class PrologueManager : MonoBehaviour
         mainCamera.transform.position = camPos;
 
         if(thinkManager.ongoingDialogue && thinkManager.dialogueEnd && (thinkTrigger.GetCurrentDialogue() + 1) < thinkTrigger.dialogue.Length){
+            //StartCoroutine(NextStep(0));
+            switch(thinkTrigger.GetCurrentDialogue()){
+                case 0:
+                    StartCoroutine(NextStep(1));
+                    break;
+                default:
+                    StartCoroutine(NextStep(0));
+                    break;
+            }
+        }
+        if(textEnter){
+            textEnter = false;
+            nameInput.enabled = false;
             StartCoroutine(NextStep(0));
         }
-        
-        if(Input.GetButtonDown("Jump")){
-            //NextCameraMovement();
+        if(thinkManager.ongoingDialogue && thinkManager.dialogueEnd && thinkTrigger.GetCurrentDialogue() + 1 == thinkTrigger.dialogue.Length){
+            StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
         }
         
     }
@@ -68,12 +86,28 @@ public class PrologueManager : MonoBehaviour
 
     private IEnumerator NextStep(int action){
         NextCameraMovement();
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.5f);
         switch(action){
             case 0:
                 thinkTrigger.TriggerDialogue();
                 break;
+            case 1:
+                nameInput.enabled = true;
+                break;
         }
-        
+    }
+
+    public void LoadNextLevel(){
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+    }
+
+    IEnumerator LoadLevel(int levelIndex){
+        // Play animation
+        transition.SetTrigger("Start");
+        // Wait
+        yield return new WaitForSeconds(transitionTime);
+        // Load Scene
+        SceneManager.LoadScene(levelIndex);
     }
 }

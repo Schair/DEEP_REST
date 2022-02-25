@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        FindObjectOfType<AudioManager>().Stop("THEME");
+        //FindObjectOfType<AudioManager>().Stop("THEME");
         LoadNextLevel();
     }
 

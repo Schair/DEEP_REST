@@ -3579,6 +3579,10 @@ PrefabInstance:
       value: AUDIO_MANAGER
       objectReference: {fileID: 0}
     - target: {fileID: 3255197364565567398, guid: 536ba0323283ce14180f99b92d724d59, type: 3}
+      propertyPath: destroyAtChange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3255197364565567398, guid: 536ba0323283ce14180f99b92d724d59, type: 3}
       propertyPath: sounds.Array.data[0].fadeOut
       value: 1
       objectReference: {fileID: 0}
