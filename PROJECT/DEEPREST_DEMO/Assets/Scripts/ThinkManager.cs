@@ -29,6 +29,9 @@ public class ThinkManager : MonoBehaviour
     private void Update() {
         CheckDialogue();
         CheckArrowVisibility();
+        if(Input.GetButtonDown("Jump")){
+            Debug.Log("ongoing: " + ongoingDialogue + "\ntext: " + textOngoing + "\nend : " + dialogueEnd);
+        }
     }
 
     public void StartDialogue(ThinkDialogue dialogue)
@@ -65,7 +68,12 @@ public class ThinkManager : MonoBehaviour
         string nextLine = lines.Dequeue();
         string nextName = names.Dequeue();
         //Debug.Log(nextLine);
+
+        if(nextName == "ç") nextName = GameInfoIO.ReadName().ToUpper();
+        else if(nextName == "$") nextName = GameInfoIO.ReadCouple().ToUpper();
+
         nameText.text = nextName;
+
         //messageText.text = nextLine;
         StopAllCoroutines();
         StartCoroutine(TypeLine(nextLine));
@@ -73,13 +81,12 @@ public class ThinkManager : MonoBehaviour
     }
 
     IEnumerator TypeLine(string line){
-        float juicyWaiting = 0.02f;
+        float juicyWaiting = 0.01f;
         messageText.text = "";
         textOngoing = true;
         foreach(char letter in line.ToCharArray()){
+            textOngoing = textOngoing ? true : false;
             if(textOngoing){
-                messageText.text += letter;
-
                 // Now lets make the text a little bit juicy
                 if(letter == ',') juicyWaiting = 0.3525f;
                 else if(letter == '.' || letter == '?' || letter == '!') juicyWaiting = 0.75f;
@@ -87,7 +94,14 @@ public class ThinkManager : MonoBehaviour
                 {
                     thinkAnimation.SetTrigger("MoveText");
                 }
-                else juicyWaiting = 0.02f;
+ 
+                else if(letter == 'ç') messageText.text += GameInfoIO.ReadName();
+                
+                else if(letter == '$') messageText.text += GameInfoIO.ReadCouple();
+
+                else juicyWaiting = 0.01f;
+
+                if(letter != 'ç' && letter != '$') messageText.text += letter;
 
                 // The text writes itself with different timings depending on the char that has been written
                 yield return new WaitForSeconds(juicyWaiting);

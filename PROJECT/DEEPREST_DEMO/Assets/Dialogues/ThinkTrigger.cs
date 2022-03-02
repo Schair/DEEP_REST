@@ -21,7 +21,7 @@ public class ThinkTrigger : MonoBehaviour
 
     public void TriggerAndSetCertainDialogue(int index){
         currentDialogue = index;
-        TriggerDialogue();
+        FindObjectOfType<ThinkManager>().StartDialogue(dialogue[currentDialogue]);
     }
 
     void Start()

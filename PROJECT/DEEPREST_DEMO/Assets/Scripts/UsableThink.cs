@@ -4,17 +4,30 @@ using UnityEngine;
 
 public class UsableThink : Interactable
 {
+    [Header("COMPONENTS")][SerializeField]
     public ThinkTrigger dialogue;
-    public int dialogueNumber;
     public ThinkManager dialogueManager;
+    [Header("DIALOGUE VARIABLES")][SerializeField]
+    public int dialogueNumber;
+
+    [Header("INTERACTION STATE")][SerializeField]
+    public bool disableInteraction;
     private Collider2D playerCollider;
     private bool playerCollision = false;
     public override void Interact()
     {
         dialogue.TriggerAndSetCertainDialogue(dialogueNumber);
     }
+
+    public void disableUsable(){
+        disableInteraction = true;
+    }
+
+    public void enableUsable(){
+        disableInteraction = false;
+    }
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("Player")){
+        if(other.CompareTag("Player") && !disableInteraction){
             playerCollider = other;
             other.GetComponent<PlayerMovement>().OpenInteractIcon();
             playerCollision = true;
@@ -22,7 +35,7 @@ public class UsableThink : Interactable
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if(other.CompareTag("Player")){
+        if(other.CompareTag("Player") && !disableInteraction){
             playerCollider = new Collider2D();
             other.GetComponent<PlayerMovement>().CloseInteractIcon();
             playerCollision = false;
@@ -33,7 +46,7 @@ public class UsableThink : Interactable
     }
 
     private void CheckInteraction(){
-        if(playerCollision && Input.GetButtonDown("Fire1") && !dialogueManager.ongoingDialogue) {
+        if(playerCollision && Input.GetButtonDown("Fire1") && !dialogueManager.ongoingDialogue && !disableInteraction) {
             playerCollider.GetComponent<PlayerMovement>().CloseInteractIcon();
             Interact();
         }

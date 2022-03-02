@@ -9,17 +9,18 @@ public class PrologueManager : MonoBehaviour
     [SerializeField] private Vector2[] movements;
     private int currentMovement = 0;
     public Animator transition;
+    public Animator canvasAnimation;
     public float transitionTime;
     public Camera mainCamera;
     public Canvas nameInput;
     public ThinkManager thinkManager;
     public ThinkTrigger thinkTrigger;
-    public bool textEnter;
+    [HideInInspector] public bool textEnter;
+    [HideInInspector] public bool textEnterCouple;
     private Vector3 camPos;
     void Awake()
     {
         camPos = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y,mainCamera.transform.position.z);
-        nameInput.enabled = false;
     }
 
     void Start()
@@ -37,6 +38,9 @@ public class PrologueManager : MonoBehaviour
                 case 0:
                     StartCoroutine(NextStep(1));
                     break;
+                case 1:
+                    StartCoroutine(NextStep(2));
+                    break;
                 default:
                     StartCoroutine(NextStep(0));
                     break;
@@ -44,11 +48,17 @@ public class PrologueManager : MonoBehaviour
         }
         if(textEnter){
             textEnter = false;
-            nameInput.enabled = false;
+            canvasAnimation.SetBool("IsOpen", false);
+            StartCoroutine(NextStep(0));
+        }
+        if(textEnterCouple){
+            textEnterCouple = false;
+            canvasAnimation.SetBool("IsOpenCouple", false);
             StartCoroutine(NextStep(0));
         }
         if(thinkManager.ongoingDialogue && thinkManager.dialogueEnd && thinkTrigger.GetCurrentDialogue() + 1 == thinkTrigger.dialogue.Length){
-            StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+            //StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+            LoadNextLevel();
         }
         
     }
@@ -92,7 +102,10 @@ public class PrologueManager : MonoBehaviour
                 thinkTrigger.TriggerDialogue();
                 break;
             case 1:
-                nameInput.enabled = true;
+                canvasAnimation.SetBool("IsOpen", true);
+                break;
+            case 2:
+                canvasAnimation.SetBool("IsOpenCouple", true);
                 break;
         }
     }

@@ -154,8 +154,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: {fileID: 258162044}
-  dialogueNumber: 2
   dialogueManager: {fileID: 258162045}
+  dialogueNumber: 4
+  disableInteraction: 0
 --- !u!60 &21159101
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -196,7 +197,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &209620339
 GameObject:
@@ -229,8 +230,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: {fileID: 258162044}
-  dialogueNumber: 1
   dialogueManager: {fileID: 258162045}
+  dialogueNumber: 3
+  disableInteraction: 0
 --- !u!60 &209620341
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -272,7 +274,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &258162043
 PrefabInstance:
@@ -287,15 +289,15 @@ PrefabInstance:
       objectReference: {fileID: 850802625}
     - target: {fileID: 316337606220436661, guid: c20fdc0308c29b64c8caf708fe0724f2, type: 3}
       propertyPath: dialogue.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 316337606220436661, guid: c20fdc0308c29b64c8caf708fe0724f2, type: 3}
       propertyPath: dialogue.Array.data[0].lines.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 316337606220436661, guid: c20fdc0308c29b64c8caf708fe0724f2, type: 3}
       propertyPath: dialogue.Array.data[0].names.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 316337606220436661, guid: c20fdc0308c29b64c8caf708fe0724f2, type: 3}
       propertyPath: dialogue.Array.data[1].lines.Array.size
@@ -314,18 +316,42 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 316337606220436661, guid: c20fdc0308c29b64c8caf708fe0724f2, type: 3}
+      propertyPath: dialogue.Array.data[3].lines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 316337606220436661, guid: c20fdc0308c29b64c8caf708fe0724f2, type: 3}
+      propertyPath: dialogue.Array.data[3].names.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 316337606220436661, guid: c20fdc0308c29b64c8caf708fe0724f2, type: 3}
+      propertyPath: dialogue.Array.data[4].lines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 316337606220436661, guid: c20fdc0308c29b64c8caf708fe0724f2, type: 3}
+      propertyPath: dialogue.Array.data[4].names.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 316337606220436661, guid: c20fdc0308c29b64c8caf708fe0724f2, type: 3}
       propertyPath: dialogue.Array.data[0].lines.Array.data[0]
-      value: "Parece que la puerta est\xE1 encajada por la humedad otra vez.\nTendr\xE9
-        que esperar para poder abrirla."
+      value: "Siempre me queda mal cuerpo cuando me miro al espejo y me cuesta discernir
+        a qui\xE9n estoy viendo."
+      objectReference: {fileID: 0}
+    - target: {fileID: 316337606220436661, guid: c20fdc0308c29b64c8caf708fe0724f2, type: 3}
+      propertyPath: dialogue.Array.data[0].lines.Array.data[1]
+      value: Al menos creo que ya se me ha pasado un poco.
       objectReference: {fileID: 0}
     - target: {fileID: 316337606220436661, guid: c20fdc0308c29b64c8caf708fe0724f2, type: 3}
       propertyPath: dialogue.Array.data[0].names.Array.data[0]
       value: "\xE7"
       objectReference: {fileID: 0}
     - target: {fileID: 316337606220436661, guid: c20fdc0308c29b64c8caf708fe0724f2, type: 3}
+      propertyPath: dialogue.Array.data[0].names.Array.data[1]
+      value: "\xE7"
+      objectReference: {fileID: 0}
+    - target: {fileID: 316337606220436661, guid: c20fdc0308c29b64c8caf708fe0724f2, type: 3}
       propertyPath: dialogue.Array.data[1].lines.Array.data[0]
-      value: "Deber\xEDa ponerme con las pr\xE1cticas de clase en alg\xFAn momento.\nLa
-        verdad es que no tengo muchas ganas."
+      value: "Dudo que sea $, pero tampoco estar\xEDa de m\xE1s comprobarlo, aunque
+        no tengo muchas ganas, la verdad."
       objectReference: {fileID: 0}
     - target: {fileID: 316337606220436661, guid: c20fdc0308c29b64c8caf708fe0724f2, type: 3}
       propertyPath: dialogue.Array.data[1].names.Array.data[0]
@@ -333,10 +359,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 316337606220436661, guid: c20fdc0308c29b64c8caf708fe0724f2, type: 3}
       propertyPath: dialogue.Array.data[2].lines.Array.data[0]
-      value: "Me gustar\xEDa, pero no puedo echarme a dormir tan pronto."
+      value: "Parece que la puerta est\xE1 encajada por la humedad otra vez.\nTendr\xE9
+        que esperar para poder abrirla."
       objectReference: {fileID: 0}
     - target: {fileID: 316337606220436661, guid: c20fdc0308c29b64c8caf708fe0724f2, type: 3}
       propertyPath: dialogue.Array.data[2].names.Array.data[0]
+      value: "\xE7"
+      objectReference: {fileID: 0}
+    - target: {fileID: 316337606220436661, guid: c20fdc0308c29b64c8caf708fe0724f2, type: 3}
+      propertyPath: dialogue.Array.data[3].lines.Array.data[0]
+      value: "Deber\xEDa ponerme con las pr\xE1cticas de clase en alg\xFAn momento.\nLa
+        verdad es que no tengo muchas ganas."
+      objectReference: {fileID: 0}
+    - target: {fileID: 316337606220436661, guid: c20fdc0308c29b64c8caf708fe0724f2, type: 3}
+      propertyPath: dialogue.Array.data[3].names.Array.data[0]
+      value: "\xE7"
+      objectReference: {fileID: 0}
+    - target: {fileID: 316337606220436661, guid: c20fdc0308c29b64c8caf708fe0724f2, type: 3}
+      propertyPath: dialogue.Array.data[4].lines.Array.data[0]
+      value: "Me gustar\xEDa, pero no puedo echarme a dormir tan pronto."
+      objectReference: {fileID: 0}
+    - target: {fileID: 316337606220436661, guid: c20fdc0308c29b64c8caf708fe0724f2, type: 3}
+      propertyPath: dialogue.Array.data[4].names.Array.data[0]
       value: "\xE7"
       objectReference: {fileID: 0}
     - target: {fileID: 316337606261948778, guid: c20fdc0308c29b64c8caf708fe0724f2, type: 3}
@@ -349,7 +393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 316337606261948778, guid: c20fdc0308c29b64c8caf708fe0724f2, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 316337606261948778, guid: c20fdc0308c29b64c8caf708fe0724f2, type: 3}
       propertyPath: m_AnchorMax.x
@@ -498,7 +542,7 @@ Transform:
   - {fileID: 2093584763}
   - {fileID: 1004264020}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &526980506
 GameObject:
@@ -532,7 +576,7 @@ Transform:
   - {fileID: 1076999262}
   - {fileID: 1423449676}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &581200745
 GameObject:
@@ -1289,7 +1333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9183834800672372349, guid: f67315699fec18f42b6caf520b68cda7, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9183834800672372349, guid: f67315699fec18f42b6caf520b68cda7, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2225,6 +2269,56 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &787285017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 787285019}
+  - component: {fileID: 787285018}
+  m_Layer: 0
+  m_Name: INGAME_MANAGER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &787285018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787285017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 174b89c74dbc4ff4080130766b68174c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueCollisions: []
+  thinkCollisions: []
+  scriptedMovement: {fileID: 0}
+  dialogueTrigger: {fileID: 0}
+  thinkTrigger: {fileID: 0}
+  dialogueManager: {fileID: 0}
+  thinkManager: {fileID: 0}
+--- !u!4 &787285019
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787285017}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.7317011, y: 2.4101696, z: -11.264117}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &847252597 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 9163886688800922944, guid: 5e0be707678e77540a88fbcca2a61044, type: 3}
@@ -2313,6 +2407,52 @@ Transform:
   m_Father: {fileID: 526980507}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -30.756}
+--- !u!1 &909356065
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 909356067}
+  - component: {fileID: 909356066}
+  m_Layer: 0
+  m_Name: FIRST_SCENE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &909356066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909356065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 433a147fdf877d241bd7f4694896e780, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  directionsToMove: 0600000005000000
+  secondsToMove:
+  - 2
+--- !u!4 &909356067
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909356065}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.903096, y: 2.5360575, z: -11.388937}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1004264019
 GameObject:
   m_ObjectHideFlags: 0
@@ -4793,7 +4933,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &1468389619
 PolygonCollider2D:
@@ -4954,8 +5094,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: {fileID: 258162044}
-  dialogueNumber: 0
   dialogueManager: {fileID: 258162045}
+  dialogueNumber: 2
+  disableInteraction: 0
 --- !u!60 &1889197278
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -4997,8 +5138,55 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2029955048
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2029955049}
+  - component: {fileID: 2029955050}
+  m_Layer: 0
+  m_Name: MOVEMENT_SCRIPT
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2029955049
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029955048}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.7317011, y: 2.4101696, z: -11.264117}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2029955050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029955048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f7c7d26df418924289cb027b6163395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moves: {fileID: 0}
+  time: 0
+  moveCharacter: 0
+  initialDirection: 5
 --- !u!1 &2033190180
 GameObject:
   m_ObjectHideFlags: 0
@@ -5553,7 +5741,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2092996073
 MonoBehaviour:
@@ -5788,15 +5976,15 @@ PrefabInstance:
       objectReference: {fileID: 847252597}
     - target: {fileID: 5825553007213477863, guid: b910dc98ebabbb24ca5c9d7e96a47a5e, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5825553007213477863, guid: b910dc98ebabbb24ca5c9d7e96a47a5e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.34
+      value: -1.11
       objectReference: {fileID: 0}
     - target: {fileID: 5825553007213477863, guid: b910dc98ebabbb24ca5c9d7e96a47a5e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.47
+      value: 1.77
       objectReference: {fileID: 0}
     - target: {fileID: 5825553007213477863, guid: b910dc98ebabbb24ca5c9d7e96a47a5e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5853,7 +6041,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9163886688800922948, guid: 5e0be707678e77540a88fbcca2a61044, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9163886688800922948, guid: 5e0be707678e77540a88fbcca2a61044, type: 3}
       propertyPath: m_AnchorMax.x

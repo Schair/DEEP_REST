@@ -57,7 +57,7 @@ public class NarratorManager : MonoBehaviour
     }
 
     IEnumerator TypeLine(string line){
-        float juicyWaiting = 0.075f;
+        float juicyWaiting = 0.03f;
         narratorText.text = "";
         foreach(char letter in line.ToCharArray()){
             narratorText.text += letter;
@@ -65,7 +65,7 @@ public class NarratorManager : MonoBehaviour
             // Now lets make the text a little bit juicy
             if(letter == ',') juicyWaiting = 1.0f;
             else if(letter == '.' || letter == '?' || letter == '!') juicyWaiting = 1.75f;
-            else juicyWaiting = 0.075f;
+            else juicyWaiting = 0.03f;
 
             
             // The text writes itself with different timings depending on the char that has been written
