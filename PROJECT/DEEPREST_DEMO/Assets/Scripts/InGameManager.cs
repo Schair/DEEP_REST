@@ -27,8 +27,11 @@ public class InGameManager : MonoBehaviour
 
         scriptedMovement = FindObjectOfType<ScriptedMovement>();
 
-        thinkTrigger = FindObjectOfType<ThinkTrigger>();
         dialogueTrigger = FindObjectOfType<DialogueTrigger>();
+        thinkTrigger = FindObjectOfType<ThinkTrigger>();
+
+        dialogueManager = FindObjectOfType<DialogueManager>();
+        thinkManager = FindObjectOfType<ThinkManager>();
     }
     void Start()
     {

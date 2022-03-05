@@ -7,7 +7,7 @@ public class FirstScene : MonoBehaviour
     private bool sceneEnd;
     private int dirPointer;
     private int secPointer;
-    private InGameManager inGameManager;
+    public InGameManager inGameManager;
     [Header("SCRIPTED MOVEMENT")]
     [SerializeField] [Tooltip("[0 N], [1 NE], [2 E], [3 SE],\n[4 S], [5 SW], [6 W], [7 NW]")]
     private int[] directionsToMove;
@@ -26,6 +26,7 @@ public class FirstScene : MonoBehaviour
     }
     void Start()
     {
+        /*
         // Scene Start
         inGameManager.disableAllUsables();
 
@@ -51,6 +52,8 @@ public class FirstScene : MonoBehaviour
         new WaitUntil(() => inGameManager.thinkManager.dialogueEnd);
 
         inGameManager.enableAllUsables();
+        */
+        StartCoroutine(FirstSceneStep());
     }
     void Update()
     {
@@ -58,14 +61,17 @@ public class FirstScene : MonoBehaviour
     }
 
     private void UpdateDirections(){
-        if(dirPointer + 1 > directionsToMove.Length) dirPointer++;
+        if(dirPointer + 1 < directionsToMove.Length) dirPointer++;
+        //Debug.Log("CURRENT DIRECTION: " + directionsToMove[dirPointer] + "\nPOINTER: " + dirPointer);
     }
 
     private void UpdateSeconds(){
-        if(secPointer + 1 > secondsToMove.Length) secPointer++;
+        if(secPointer + 1 < secondsToMove.Length) secPointer++;
+        //Debug.Log("CURRENT SECONDS: " + secondsToMove[secPointer] + "\nPOINTER: " + secPointer);
     }
     
     private IEnumerator FirstSceneStep(){
+        yield return new WaitForSeconds(1.0f);
         inGameManager.TriggerThink();
         yield return new WaitUntil(() => inGameManager.thinkManager.dialogueEnd);
 
@@ -74,6 +80,8 @@ public class FirstScene : MonoBehaviour
 
         yield return new WaitForSeconds(secondsToMove[secPointer]);
         UpdateSeconds();
+
+        yield return new WaitForSeconds(1.0f);
 
         inGameManager.SetCharacterDirection(directionsToMove[dirPointer]);
         UpdateDirections();
