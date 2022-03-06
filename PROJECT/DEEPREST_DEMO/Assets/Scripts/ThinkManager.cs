@@ -36,6 +36,7 @@ public class ThinkManager : MonoBehaviour
 
     public void StartDialogue(ThinkDialogue dialogue)
     {
+        FindObjectOfType<PlayerMovement>().disableMovement = true;
         ongoingDialogue = true;
         textOngoing = true;
         thinkAnimation.SetBool("IsOpen", true);
@@ -117,6 +118,7 @@ public class ThinkManager : MonoBehaviour
         //ongoingDialogue = false;
         dialogueEnd = true;
         thinkAnimation.SetBool("IsOpen", false);
+        FindObjectOfType<PlayerMovement>().disableMovement = false;
         Debug.Log("END OF THE DIALOGUE ");
     }
 

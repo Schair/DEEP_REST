@@ -9,7 +9,6 @@ public class ScriptedMovement : MonoBehaviour
     private bool characterMoving;
     private float currentSecs;
     [SerializeField]private float time;
-    public bool moveCharacter;
     [Header("MOVEMENT VARIABLES")]
     [Tooltip("[0 N], [1 NE], [2 E], [3 SE],\n[4 S], [5 SW], [6 W], [7 NW]")]
     public int initialDirection;
@@ -40,10 +39,7 @@ public class ScriptedMovement : MonoBehaviour
 
     void Update()
     {
-        if(moveCharacter){
-            moveCharacter = false;
-            MoveCharacterCertainSeconds(6, 2.0f);
-        }
+
     }
 
     void FixedUpdate()

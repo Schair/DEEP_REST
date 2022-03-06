@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InGameManager : MonoBehaviour
 {
+    [Header("VARIABLES")]
+    public bool scenes;
 
     [Header("DIALOGUE COLLIDERS")] 
     [SerializeField] private Usable[] dialogueCollisions;
@@ -35,15 +37,16 @@ public class InGameManager : MonoBehaviour
     }
     void Start()
     {
-        disableAllUsables();
+        //disableAllUsables();
     }
 
     void Update()
     {
-
+        CheckScenesLeft();
+        //CheckDisabledMovement();
     }
 
-    public void disableAllUsables(){
+    public void DisableAllUsables(){
         foreach(UsableThink coll in thinkCollisions){
             coll.disableUsable();
         }
@@ -54,7 +57,29 @@ public class InGameManager : MonoBehaviour
         */
     }
 
-    public void enableAllUsables(){
+    public void DisableNonTaggedUsables(){
+        foreach(UsableThink coll in thinkCollisions){
+            if (!coll.CompareTag("Usable")) coll.disableUsable();
+        }
+        /*// TODO: create methods in Usable.cs
+        foreach(Usable coll in dialogueCollisions){
+            if (!coll.CompareTag("Usable")) coll.disableUsable();
+        }
+        */
+    }
+
+    public void DisableTaggedUsables(){
+        foreach(UsableThink coll in thinkCollisions){
+            if (coll.CompareTag("Usable")) coll.disableUsable();
+        }
+        /*// TODO: create methods in Usable.cs
+        foreach(Usable coll in dialogueCollisions){
+            if (coll.CompareTag("Usable")) coll.disableUsable();
+        }
+        */
+    }
+
+    public void EnableAllUsables(){
         foreach(UsableThink coll in thinkCollisions){
             coll.enableUsable();
         }
@@ -63,6 +88,22 @@ public class InGameManager : MonoBehaviour
             coll.enableUsable();
         }
         */
+    }
+
+    private void CheckScenesLeft(){
+        if(!scenes){
+            EnableAllUsables();
+            DisableTaggedUsables();
+            scenes = true;
+        }
+    }
+
+    public void DisableMovement(){
+        FindObjectOfType<PlayerMovement>().disableMovement = true;
+    }
+
+    public void EnableMovement(){
+        FindObjectOfType<PlayerMovement>().disableMovement = false;
     }
 
     public void Move(int dir, float sec){

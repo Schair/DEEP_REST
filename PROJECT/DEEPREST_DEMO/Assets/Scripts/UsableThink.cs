@@ -14,9 +14,16 @@ public class UsableThink : Interactable
     public bool disableInteraction;
     private Collider2D playerCollider;
     private bool playerCollision = false;
+    [Header("SCENE VARIABLES")]
+    public bool scene;
+    [SerializeField] private int sceneNumber;
+    [SerializeField] private int numberOfLines;
+    [SerializeField] private float[] listOfWaiting; 
     public override void Interact()
     {
-        dialogue.TriggerAndSetCertainDialogue(dialogueNumber);
+        Debug.Log(scene);
+        if(!scene) dialogue.TriggerAndSetCertainDialogue(dialogueNumber);
+        else StartCoroutine(sceneStart());
     }
 
     public void disableUsable(){
@@ -49,6 +56,32 @@ public class UsableThink : Interactable
         if(playerCollision && Input.GetButtonDown("Fire1") && !dialogueManager.ongoingDialogue && !disableInteraction) {
             playerCollider.GetComponent<PlayerMovement>().CloseInteractIcon();
             Interact();
+        }
+    }
+
+    private IEnumerator sceneStart(){
+        switch(sceneNumber){
+            case 0:
+                dialogue.TriggerAndSetCertainDialogue(dialogueNumber);
+                yield return new WaitUntil(() => dialogueManager.dialogueEnd);
+
+                FindObjectOfType<FirstScene>().phone.SetBool("Visible", true);
+
+                yield return new WaitForSeconds(listOfWaiting[0]);
+
+                for (int i = 1; i < numberOfLines; i++)
+                {
+                    dialogue.TriggerDialogue();
+                    yield return new WaitUntil(() => dialogueManager.dialogueEnd);
+                    yield return new WaitForSeconds(listOfWaiting[i]);
+                }
+
+                scene = false;
+                FindObjectOfType<InGameManager>().scenes = false;
+                break;
+            default:
+                Debug.Log("SCENE NOT FOUND");
+                break;
         }
     }
 }
