@@ -36,7 +36,7 @@ public class ThinkManager : MonoBehaviour
 
     public void StartDialogue(ThinkDialogue dialogue)
     {
-        FindObjectOfType<PlayerMovement>().disableMovement = true;
+        if(FindObjectOfType<PlayerMovement>()) FindObjectOfType<PlayerMovement>().disableMovement = true;
         ongoingDialogue = true;
         textOngoing = true;
         thinkAnimation.SetBool("IsOpen", true);
@@ -108,7 +108,10 @@ public class ThinkManager : MonoBehaviour
                 yield return new WaitForSeconds(juicyWaiting);
             }
             else{
-                messageText.text += letter;
+                if(letter == 'ç') messageText.text += GameInfoIO.ReadName();
+                else if(letter == '$') messageText.text += GameInfoIO.ReadCouple();
+
+                if(letter != 'ç' && letter != '$') messageText.text += letter;
             }
         }
         textOngoing = false;
@@ -118,7 +121,7 @@ public class ThinkManager : MonoBehaviour
         //ongoingDialogue = false;
         dialogueEnd = true;
         thinkAnimation.SetBool("IsOpen", false);
-        FindObjectOfType<PlayerMovement>().disableMovement = false;
+        if(FindObjectOfType<PlayerMovement>()) FindObjectOfType<PlayerMovement>().disableMovement = false;
         Debug.Log("END OF THE DIALOGUE ");
     }
 

@@ -67,8 +67,14 @@ public class UsableThink : Interactable
 
                 FindObjectOfType<FirstScene>().phone.SetBool("Visible", true);
 
+                FindObjectOfType<PhoneMenu>().OpenMenu();
+
                 yield return new WaitForSeconds(listOfWaiting[0]);
 
+                FindObjectOfType<PhoneMenu>().CloseMenu();
+                GameInfoIO.EnablePhone();
+                yield return new WaitForSeconds(0.3f);
+                
                 for (int i = 1; i < numberOfLines; i++)
                 {
                     dialogue.TriggerDialogue();

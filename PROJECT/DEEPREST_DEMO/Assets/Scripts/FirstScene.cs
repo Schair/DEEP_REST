@@ -22,6 +22,8 @@ public class FirstScene : MonoBehaviour
         dirPointer = 0;
         secPointer = 0;
 
+        if(GameInfoIO.GetSize() < 3) GameInfoIO.DisablePhone();
+
     }
     void Start()
     {
@@ -49,6 +51,7 @@ public class FirstScene : MonoBehaviour
 
         yield return new WaitForSeconds(secondsToMove[secPointer]);
         UpdateSeconds();
+        yield return new WaitForSeconds(1.0f);
 
         inGameManager.DisableMovement();
         yield return new WaitForSeconds(1.0f);
