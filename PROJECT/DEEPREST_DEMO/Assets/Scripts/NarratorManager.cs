@@ -30,7 +30,7 @@ public class NarratorManager : MonoBehaviour
         ongoingDialogue = true;
 
         // Debugging purposes
-        Debug.Log("NARRATION STARTING...");
+        //Debug.Log("NARRATION STARTING...");
 
         lines.Clear();
 
@@ -75,7 +75,7 @@ public class NarratorManager : MonoBehaviour
     }
 
     public void EndDialogue(){
-        Debug.Log("End of the dialogue");
+        //Debug.Log("End of the dialogue");
         narratorText.text = "";
         crossfade.startFade = true;
     }

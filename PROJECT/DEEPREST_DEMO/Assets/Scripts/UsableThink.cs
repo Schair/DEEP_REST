@@ -21,7 +21,7 @@ public class UsableThink : Interactable
     [SerializeField] private float[] listOfWaiting; 
     public override void Interact()
     {
-        Debug.Log(scene);
+        //Debug.Log(scene);
         if(!scene) dialogue.TriggerAndSetCertainDialogue(dialogueNumber);
         else StartCoroutine(sceneStart());
     }

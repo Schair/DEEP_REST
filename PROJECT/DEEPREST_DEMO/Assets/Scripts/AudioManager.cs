@@ -86,6 +86,19 @@ public class AudioManager : MonoBehaviour
         s.source.volume = newVolume;
     }
 
+    private void UpdatePitch(string name, float newSpeed)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if(s == null)
+        {
+            Debug.Log("AUDIO NAME NOT FOUND!");
+            return;
+        }
+        s.source.pitch = newSpeed;
+    }
+
+    // Various Coroutines
+
     private IEnumerator PlayAtStart(Sound sound){
         yield return new WaitForSeconds(sound.secondsTillStart);
         Play(sound.name);

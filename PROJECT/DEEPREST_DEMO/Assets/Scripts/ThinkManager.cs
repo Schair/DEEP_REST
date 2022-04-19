@@ -42,7 +42,7 @@ public class ThinkManager : MonoBehaviour
         thinkAnimation.SetBool("IsOpen", true);
         // Debugging purposes
         string dialogueNames = GetDialogueNames(dialogue);
-        Debug.Log("STARTING CONVERSATION WITH " + dialogueNames);
+        //Debug.Log("STARTING CONVERSATION WITH " + dialogueNames);
 
         lines.Clear();
         names.Clear();
@@ -122,7 +122,7 @@ public class ThinkManager : MonoBehaviour
         dialogueEnd = true;
         thinkAnimation.SetBool("IsOpen", false);
         if(FindObjectOfType<PlayerMovement>()) FindObjectOfType<PlayerMovement>().disableMovement = false;
-        Debug.Log("END OF THE DIALOGUE ");
+        //Debug.Log("END OF THE DIALOGUE ");
     }
 
     private void CheckDialogue(){
